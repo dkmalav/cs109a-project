@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Forecasting Economic Growth Using Business News Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="./bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <style>
+        body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+    <link href="./bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../bootstrap/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav icons -->
+    <link rel="shortcut icon" href="./images/harvard.png">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">CS109a-Project</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active"><a href="#home">Home</a></li>
+                    <li><a href="#references">References</a></li>
+                    <li><a href="#about">About us</a></li>
+                </ul>
+                <a id="forkme_banner" href="https://github.com/dkmalav/cs109a-project">View on GitHub</a>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+
+<div id="home" class="container content">
+    <!--<div class="hero-unit" style="background: url('http://nite-lite.org/wp-content/uploads/2016/06/business-news.jpg')">-->
+    <div class="hero-unit" style="background-color: #2ba6cb; text-align: center;">
+        <h1><font color="white">Forecasting Economic Growth Using Business News</font></h1>
+        <p><font color="black">Dinesh Malav, Maja Campara, Naveen Sinha, Udaykiran Tadiparty</font></p>
+    </div>
+    <div>
+        <h3>Introduction</h3>
+        <hr/>
+        <div>
+            Business news sentiment can be conjectured to both reflect how the economy is doing, as well as
+            influencing the spending of consumers and investors who read it. It is likely, therefore, there is
+            predictive value in the sentiment that is contained in business news. This project will collect
+            business news over a certain time span, perform sentiment analysis on it, and forecast economic
+            growth (GDP). These forecasts are relevant for e.g. investors making investment decisions, or for
+            policy makers who wish to meet a certain economic policy objective.
+        </div>
+
+        <h3>Objective</h3>
+        <hr/>
+        <div>
+            Predict GDP (economic growth) from the sentiment that is contained in
+            <a href="http://www.nytimes.com/">The New York Times</a> business news,
+            perhaps supplemented with traditional economic indicators.
+        </div>
+
+        <h3>Date Collection</h3>
+        <hr/>
+
+        <h4>Economic Data Collection</h4>
+        <div>
+            To analyze and assess GDP data for the US, quarterly and yearly data were downloaded from the
+            <a href="http://www.bea.gov/">U.S. Bureau of Economic Analysis (BEA)</a> dating back to 1947. This data contains GDP value in current dollars
+            and chained 2009 dollars in billions.
+        </div>
+
+        <div class="row">
+            <div class="span6" style="text-align: center;">
+                <img src="./images/usgdp.png">
+            </div>
+            <div class="span6" style="text-align: center;">
+                <img src="./images/usgdp_rate.png">
+            </div>
+        </div>
+
+        <h4>Business News Collection</h4>
+        <div>
+            The New York Times (NYT) provides an Article Search API to fetch data related to news articles. This API
+            does not return full text of articles, but it will return a number of helpful metadata such as subject
+            terms, abstract, lead paragraph, and date, as well as URLs, which one could conceivably use to scrape the
+            full text of articles. For this project we will be collecting lead paragraph for business articles for
+            specified time period. In order to request data from NYT an API key must be requested from
+            <a href="http://developer.nytimes.com/">NYT Developers Network</a>. The article search API is limited to 1K calls per day, and 5 calls per
+            second. These limits impose challenge for collecting as much data as possible for a day and time period.
+            Based on the limited time for the project, the data collection was limited to two API calls or 20 article
+            per day. This allowed to request 500 days worth of data per day. A python wrapper was developed around NYT
+            Article Search API to get articles for a given start and end date. The reqested lead paragraph data are
+            then store in a file with file name reflecting the day in the format YYYYMMDD.txt
+
+        </div>
+
+        <div class="row">
+            <div class="span12" style="text-align: center;">
+                <img src="./images/article_count.png">
+            </div>
+        </div>
+
+        <h3>Data Exploration</h3>
+        <hr/>
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur mauris vel pellentesque iaculis.
+            Quisque sed ante consequat, vehicula nisi id, elementum felis. Aliquam eget euismod sem, vel venenatis nisl.
+            Maecenas id neque eget est dignissim tincidunt. In lorem ex, suscipit quis ipsum at, consequat congue ex.
+            Nullam ac nunc quam. Maecenas semper finibus dignissim. Mauris imperdiet vel nulla et rhoncus.
+            Mauris malesuada fringilla nibh. Ut faucibus tristique dui pellentesque porta. Morbi sem ex, ornare mattis
+            dui id, convallis rutrum dolor.
+        </div>
+
+        <h3>Data Modeling and Analysis</h3>
+        <hr/>
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur mauris vel pellentesque iaculis.
+            Quisque sed ante consequat, vehicula nisi id, elementum felis. Aliquam eget euismod sem, vel venenatis nisl.
+            Maecenas id neque eget est dignissim tincidunt. In lorem ex, suscipit quis ipsum at, consequat congue ex.
+            Nullam ac nunc quam. Maecenas semper finibus dignissim. Mauris imperdiet vel nulla et rhoncus.
+            Mauris malesuada fringilla nibh. Ut faucibus tristique dui pellentesque porta. Morbi sem ex, ornare mattis
+            dui id, convallis rutrum dolor.
+        </div>
+
+        <h3>Prediction</h3>
+        <hr/>
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur mauris vel pellentesque iaculis.
+            Quisque sed ante consequat, vehicula nisi id, elementum felis. Aliquam eget euismod sem, vel venenatis nisl.
+            Maecenas id neque eget est dignissim tincidunt. In lorem ex, suscipit quis ipsum at, consequat congue ex.
+            Nullam ac nunc quam. Maecenas semper finibus dignissim. Mauris imperdiet vel nulla et rhoncus.
+            Mauris malesuada fringilla nibh. Ut faucibus tristique dui pellentesque porta. Morbi sem ex, ornare mattis
+            dui id, convallis rutrum dolor.
+        </div>
+
+        <h3>Conclusion</h3>
+        <hr/>
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur mauris vel pellentesque iaculis.
+            Quisque sed ante consequat, vehicula nisi id, elementum felis. Aliquam eget euismod sem, vel venenatis nisl.
+            Maecenas id neque eget est dignissim tincidunt. In lorem ex, suscipit quis ipsum at, consequat congue ex.
+            Nullam ac nunc quam. Maecenas semper finibus dignissim. Mauris imperdiet vel nulla et rhoncus.
+            Mauris malesuada fringilla nibh. Ut faucibus tristique dui pellentesque porta. Morbi sem ex, ornare mattis
+            dui id, convallis rutrum dolor.
+        </div>
+
+
+    </div>
+
+</div> <!-- /container -->
+
+<div class="container hidden content" id="references">
+    <h3>References</h3>
+    <hr/>
+    <div>
+        <ol class="list-group">
+            <li class="list-group-item">
+                Zhang, D., Simoff, S.J. and Debenham, J., 2005, December. Exchange rate modelling using news
+                articles and economic data. In Australasian Joint Conference on Artificial Intelligence
+                (pp. 467-476). Springer Berlin Heidelberg.
+            </li>
+            <li class="list-group-item">
+                Li, G, Liu, F., 2013, Sentiment analysis based on clustering: a framework in improving accuracy
+                and recognizing neutral opinions. Applied Intelligence 40: pp.441–452. Doi: 10.1007/s10489-013-0463-3
+            </li>
+            <li class="list-group-item">
+                Esuli, A. , Sebastiani, F., 2006, SENTIWORDNET: A Publicly Available Lexical Resource for Opinion
+                Mining. 5th Conference on Language Resources and Evaluation (LREC’06)
+            </li>
+            <li>
+                "US Department of Commerce, BEA", Bureau of Economic Analysis,
+                http://www.bea.gov/national/index.htm#gdp,, 05 Nov 2016
+            </li>
+            <li>
+                "Economic Indicator", Wikipedia, https://en.wikipedia.org/wiki/Economic_indicator, 31 July 2016
+            </li>
+        </ol>
+    </div>
+</div>  <!-- /container -->
+
+<div class="container hidden content" id="about">
+    <div class="row" style="margin-top:20px;">
+        <div class="span2"><img src="http://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/2330.png&w=350&h=254"></div>
+        <h3 class="span8">Dinesh Malav</h3>
+    </div>
+    <hr/>
+    <div class="row" style="margin-top:20px;">
+        <div class="span2"><img src="http://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/2330.png&w=350&h=254"></div>
+        <h3 class="span8">Maja Campara</h3>
+    </div>
+    <hr/>
+    <div class="row" style="margin-top:20px;">
+        <div class="span2"><img src="http://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/2330.png&w=350&h=254"></div>
+        <h3 class="span8">Naveen Sinha</h3>
+    </div>
+    <hr/>
+    <div class="row" style="margin-top:20px;">
+        <div class="span2"><img src="http://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/2330.png&w=350&h=254"></div>
+        <h3 class="span8">Udaykiran Tadiparty</h3>
+    </div>
+    <hr/>
+</div>  <!-- /container -->
+
+
+<script>
+$(".nav a").on('click',function(e) {
+    // make clicked tab active
+    $(".nav").find(".active").removeClass("active");
+    $(this).parent().addClass("active");
+
+    // remove hidden class from current tab content, hide everything and show this tab contents
+    $($(this).attr('href')).removeClass("hidden");
+    $(".content").hide();
+    $($(this).attr('href')).show();
+});
+</script>
+</body>
+</html>
