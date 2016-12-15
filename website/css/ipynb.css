@@ -25,7 +25,7 @@
     div.text_cell_render{
         font-family: Computer Modern, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
         line-height: 145%;
-        font-size: 130%;
+        font-size: 100%;
         width: 90%;
         margin-left:auto;
         margin-right:auto;
@@ -59,6 +59,53 @@
     	background: #fff2e6;
     	line-height: 1.21429em;
 	}
+	.rendered_html h1 {
+    font-size: 100.0%;
+    margin: 1.08em 0 0;
+    font-weight: 700;
+    line-height: 1;
+}
+	.rendered_html h2 {
+    font-size: 100.0%;
+    margin: 1.27em 0 0;
+    font-weight: 700;
+    line-height: 1;
+}
+	
+.rendered_html h2 {   
+    margin: 1em 0 0.5em 0;
+	font-weight: normal;
+	position: relative;
+	text-shadow: 0 -1px rgba(0,0,0,0.6);
+	font-size: 110%;
+	line-height: 40px;
+	background: #355681;
+	background: rgba(53,86,129, 0.8);
+	border: 1px solid #fff;
+	padding: 5px 15px;
+	color: white;
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: inset 0 0 5px rgba(53,86,129, 0.5);
+	font-family: 'Muli', sans-serif;
+}
+	
+	div.text_cell_render {
+    font-family: Computer Modern, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    line-height: 145%;
+    font-size: 100%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+	div.text_cell_render {
+    font-family: Computer Modern, "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    line-height: 145%;
+    font-size: 100%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
 </style>
 <script>
     MathJax.Hub.Config({
