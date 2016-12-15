@@ -303,7 +303,7 @@ plt.show()
             </div>
         </div>
 
-        <h3>Data Exploration</h3>
+        <h3>Text Mining for Sentiment Scores</h3>
         <hr/>
         <div>
             One of the important aspects of determining the impact of the business on the GDP was to extract information
@@ -446,10 +446,11 @@ plt.show()
                 <img src="./images/auto_correlation.png">
             </div>
             <div>
-                The plot below shows all the models plotted with the GDP rate. As we can see, there are some that model
-                closely the data. Our final thoughts are that it does appear that the sentiment score predictors did
-                influence the performance of the final models as they slightly out performed the baseline model for
-                auto correlation.
+                The plot below shows the three ARIMA models discussed above, the decomposition model and the baseline
+                model compared to the rate of GDP. Our final thoughts are that it does appear that the sentiment score
+                predictors did influence the performance of the final models as they seem to not only follow the data
+                closely but also have the most optimal values on the criteria we are testing them against. Ultimately,
+                we chose the ARIMA101 model as our best fitting model for forecasting economic growth.
             </div>
 
             <div style="text-align: center;">
@@ -668,23 +669,31 @@ plt.show()
         <h3>Prediction</h3>
         <hr/>
         <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur mauris vel pellentesque iaculis.
-            Quisque sed ante consequat, vehicula nisi id, elementum felis. Aliquam eget euismod sem, vel venenatis nisl.
-            Maecenas id neque eget est dignissim tincidunt. In lorem ex, suscipit quis ipsum at, consequat congue ex.
-            Nullam ac nunc quam. Maecenas semper finibus dignissim. Mauris imperdiet vel nulla et rhoncus.
-            Mauris malesuada fringilla nibh. Ut faucibus tristique dui pellentesque porta. Morbi sem ex, ornare mattis
-            dui id, convallis rutrum dolor.
+            New York times business data between Oct 2016 to 12th December 2016 was used to calculate the sentiment
+            scores. Once done, ARIMA model (1,0,1) was run on the time series rate difference in order to predict the
+            rate difference for 2016Q4. This was then used to calculate the chained GDP value. This value was estimated
+            to be 16,668.24 billion dollars.
         </div>
 
         <h3>Conclusion</h3>
         <hr/>
         <div>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consectetur mauris vel pellentesque iaculis.
-            Quisque sed ante consequat, vehicula nisi id, elementum felis. Aliquam eget euismod sem, vel venenatis nisl.
-            Maecenas id neque eget est dignissim tincidunt. In lorem ex, suscipit quis ipsum at, consequat congue ex.
-            Nullam ac nunc quam. Maecenas semper finibus dignissim. Mauris imperdiet vel nulla et rhoncus.
-            Mauris malesuada fringilla nibh. Ut faucibus tristique dui pellentesque porta. Morbi sem ex, ornare mattis
-            dui id, convallis rutrum dolor.
+            <p>
+                Although our analysis ultimately is using sentiments in business news to forecast economic growth, we
+                must make the important distinction that GDP conditions provide important insights to investors and
+                businesses. The sentiments reflected should in fact be somewhat representative of the actuality of the
+                U.S.’ economic well-being. For example, growth in GDP would lead investors to potentially invest more as
+                they expect positive returns while GDP decline or even a recession would lead to the opposite.
+                Similarly, businesses like a construction company would for example, look at economic conditions in the
+                housing sector to understand whether momentum is improving or slowing and adjust its business strategy
+                accordingly.
+            </p>
+
+            <p>
+                Our generated results took us from using real world data with text mining to implement in time series
+                models to show the predictive value business news sentiments have on the U.S. economic growth we have
+                from the BEA for the same time period.
+            </p>
         </div>
 
         <h3>Challenges</h3>
